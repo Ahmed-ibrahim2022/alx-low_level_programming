@@ -1,44 +1,50 @@
 #include <stdio.h>
+#include <stdlib.h>
 /**
- * main- Entry point
- *
- * Author: Raafat
- *
- * description: 'print all possible cominations of two two-digit numbers'
- *
- * Return: Always 0 (Success)
+ * main - main block
+ * Description: Write a program that prints all possible
+ * different combinations of two digits
+ * Return: 0
  */
 int main(void)
 {
-	int i, j, k, l;
+int c;
+int d;
+int e;
+int f = 0;
 
-	for (i = '0'; i <= '9'; i++)
+while (f < 10)
+{
+	e = 0;
+	while (e < 10)
 	{
-		for (j = '0'; j <= '9'; j++)
+		d = 0;
+		while (d < 10)
 		{
-			for (k = '0'; k <= '9'; k++)
+			c = 0;
+			while (c < 10)
 			{
-				for (l = '0'; l <= '9'; l++)
+				if (!(f == c && e == d))
 				{
-					if ((i == k && j < l) || (i < k))
-					{
-					if (i != k || j != l)
-					{
-						putchar(i);
-						putchar(j);
-						putchar(' ');
-						putchar(k);
-						putchar(l);
-					if (i == '9' && j == '8' && k == '9' && l == '9')
-						break;
-					putchar(',');
+					putchar('0' + f);
+					putchar('0' + e);
 					putchar(' ');
-					}
+					putchar('0' + d);
+					putchar('0' + c);
+					if (!(f + e == 18 && c + d == 17 && d == 9))
+					{
+						putchar(',');
+						putchar(' ');
 					}
 				}
+				c++;
 			}
+			d++;
 		}
+		e++;
 	}
-	putchar('\n');
-	return (0);
-}															
+	f++;
+}
+putchar('\n');
+return (0);
+}
