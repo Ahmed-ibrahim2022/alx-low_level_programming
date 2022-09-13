@@ -1,71 +1,44 @@
-																			{
-																								for (l = '0'; l <= '9'; l++)
-																													{
-																																			if ((i == k && j < l) || (i < k))
-		#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>
 /**
- * main - main block
- * Description: Write a program that prints all possible
- * different combinations of two digits
- * Return: 0
+ * main- Entry point
+ *
+ * Author: Raafat
+ *
+ * description: 'print all possible cominations of two two-digit numbers'
+ *
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-int c;
-int d;
-int e;
-int f = 0;
+	int i, j, k, l;
 
-while (f < 10)
-{
-	e = 0;
-	while (e < 10)
+	for (i = '0'; i <= '9'; i++)
 	{
-		d = 0;
-		while (d < 10)
+		for (j = '0'; j <= '9'; j++)
 		{
-			c = 0;
-			while (c < 10)
+			for (k = '0'; k <= '9'; k++)
 			{
-				if (!(f == c && e == d))
+				for (l = '0'; l <= '9'; l++)
 				{
-					putchar('0' + f);
-					putchar('0' + e);
-					putchar(' ');
-					putchar('0' + d);
-					putchar('0' + c);
-					if (!(f + e == 18 && c + d == 17 && d == 9))
+					if ((i == k && j < l) || (i < k))
 					{
-						putchar(',');
+					if (i != k || j != l)
+					{
+						putchar(i);
+						putchar(j);
 						putchar(' ');
+						putchar(k);
+						putchar(l);
+					if (i == '9' && j == '8' && k == '9' && l == '9')
+						break;
+					putchar(',');
+					putchar(' ');
+					}
 					}
 				}
-				c++;
 			}
-			d++;
 		}
-		e++;
 	}
-	f++;
-}
-putchar('\n');
-return (0);
-}																																							{
-																																															if (i != k || j != l)
-																																																					{
-																																																												putchar(i);
-																																																																		putchar(j);
-																																																																								putchar(' ');
-																																																																														putchar(k);
-																																																																																				putchar(l);
-																																																																																									if (i == '9' && j == '8' && k == '9' && l == '9')
-																																																																																																break;
-																																																																																														putchar(',');
-																																																																																																			putchar(' ');
-																																																																																																								}
-																																																				}
-																																							}
-																											}
-																	}
-	
+	putchar('\n');
+	return (0);
+}															
