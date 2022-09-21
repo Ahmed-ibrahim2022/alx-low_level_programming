@@ -1,18 +1,24 @@
 /**
- *  * swap_int - swaps the values of two integers
- *   *		using two input parameters
- *    *
- *     * @a: input parameter 1
- *      * @b: input parameter 2
- *       *
- *        * Return: Nothing
- *        */
+ * _atoi - converts a string to an integer
+ *
+ * @s: string input parameter
+ *
+ * Return: converted integer from string
+*/
 
-void swap_int(int *a, int *b)
+int _atoi(char *s)
 {
-		int temp;
+	unsigned int num = 0;
+	int sign = 1;
 
-			temp = *a;
-				*a = *b;
-					*b = temp;
+	do {
+		if (*s == '-')
+			sign *= -1;
+		else if (*s >= '0' && *s <= '9')
+			num = (num * 10) + (*s - '0');
+		else if (num > 0)
+			break;
+	} while (*s++);
+
+	return (num * sign);
 }
