@@ -1,22 +1,51 @@
-# C - Static libraries
+# 0x09. C - Static libraries
 
-## Concepts
+This repository contains a static library `libmy.a` that includes various functions as listed below. The library is created from the `.c` files in the current directory using the `create_static_lib.sh` script.
 
-* C static libraries
+## Contents
 
-## Resources
+- [Description](#description)
+- [Functions Included](#functions-included)
+- [Usage](#usage)
+- [Compilation](#To compile and create the libmy.a static library, you can use the provided create_static_lib.sh script:./create_static_lib.sh
+)
+- [Contributing](#Contributions to this repository are welcome. If you find any issues or improvements, feel free to open a pull request.)
+- [License](#This project is licensed under the MIT License.
+Simply paste this content into your markdown file, save it, and it will create a well-structured README for your "0x09. C - Static libraries" project.
+)
 
-* man or help:
-    * ar
-    * ranlib
-    * nm
+## Description
 
-## Tasks
+The `libmy.a` static library contains a collection of functions that cover a variety of tasks commonly encountered in C programming.
 
-1. Create the static library libmy.a containing all the functions listed below:
+## Functions Included
 
-    * int _putchar(char c);
-    * int _islower(int c);
-    * int _isalpha(int c);
-    * int _abs(int n);
-    * int _isupper(int c);
+The following functions are included in the library:
+
+- `int _putchar(char c);`
+- `int _islower(int c);`
+- `int _isalpha(int c);`
+- `int _abs(int n);`
+- `int _isupper(int c);`
+- `int _isdigit(int c);`
+- `int _strlen(char *s);`
+- `void _puts(char *s);`
+- `char *_strcpy(char *dest, char *src);`
+- `int _atoi(char *s);`
+- `char *_strcat(char *dest, char *src);`
+- `char *_strncat(char *dest, char *src, int n);`
+- `char *_strncpy(char *dest, char *src, int n);`
+- `int _strcmp(char *s1, char *s2);`
+- `char *_memset(char *s, char b, unsigned int n);`
+- `char *_memcpy(char *dest, char *src, unsigned int n);`
+- `char *_strchr(char *s, char c);`
+- `unsigned int _strspn(char *s, char *accept);`
+- `char *_strpbrk(char *s, char *accept);`
+- `char *_strstr(char *haystack, char *needle);`
+
+## Usage
+
+To use the `libmy.a` static library, you can include it in your C programs during compilation. Here's an example:
+
+```c
+gcc -o my_program my_program.c -L. -lmy
