@@ -26,5 +26,5 @@ return (1);
 */
 int _pow_recursion(int x, int y)
 {
-return _pow_recursion_recursive(x, y);
+return (_pow_recursion_recursive(x, y));
 }
