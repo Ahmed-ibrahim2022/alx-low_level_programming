@@ -9,8 +9,8 @@
 int factorial_recursive(int n)
 {
 if (n <= 1)
-return 1;
-return n * factorial_recursive(n - 1);
+return (1);
+return (n * factorial_recursive(n - 1));
 }
 
 /**
@@ -23,7 +23,7 @@ int factorial(int n)
 {
 if (n < 0)
 {
-return -1;
+return (-1);
 }
 return factorial_recursive(n);
 }
