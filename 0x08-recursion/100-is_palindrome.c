@@ -24,14 +24,15 @@ int is_palindrome_recursive(char *s, int l)
 {
 if (l < 1)
 {
-(return 1);
+return (1);
 }
     
 if (*s == *(s + l))
 {
 return (is_palindrome_recursive(s + 1, l - 2));
 }
-(return 0);
+    
+return (0);
 }
 
 /**
