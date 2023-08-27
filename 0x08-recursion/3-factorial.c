@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* factorial_recursive - helper function for calculating factorial using recursion.
+* factorial_recursive-helper function > calculating factorial using recursion.
 *
 * @n: integer.
 * Return: factorial of n.
@@ -25,5 +25,5 @@ if (n < 0)
 {
 return (-1);
 }
-return factorial_recursive(n);
+return (factorial_recursive(n));
 }
