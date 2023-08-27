@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
-* aux_recursive-helper function > checking if a number is prime using recursion.
+* aux_recursive-helper function>checking if a number is prime using recursion.
 *
 * @n: integer.
 * @i: integer.
