@@ -1,4 +1,4 @@
-# alx-low_level_programming # <img src="https://img.icons8.com/color/48/000000/programming.png"/>
+# alx-low_level_programming  <img src="https://img.icons8.com/color/48/000000/programming.png"/>
 
 This repository contains the exercises and solutions for the ALX Low Level Programming track.
 
