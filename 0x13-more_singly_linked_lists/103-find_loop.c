@@ -1,24 +1,33 @@
-#include <stdio.h>
 #include "lists.h"
-
+#include <stdio.h>
 /**
-* main - Entry point to test linked list functions.
-* Return: Always 0.
+* find_listint_loop - finds address of starting node in looped linked list
+* @head: pointer to the head in linked list to test
+*
+* Return: The address of the node where the loop starts,
+* or NULL if there is no loop
 */
-int main(void)
+listint_t *find_listint_loop(listint_t *head)
 {
-listint_t *head = NULL;
-/* Build the linked list with a loop */
-listint_t *loop_node = add_nodeint(&head, 1);
-add_nodeint(&head, 2);
-add_nodeint(&head, 3);
-add_nodeint(&head, 4);
-loop_node->next = head;
-/* Find the start of the loop in the linked list */
-listint_t *loop_start = find_listint_loop(head);
-if (loop_start)
-printf("Loop starts at address: %p\n", (void *)loop_start);
-else
-printf("No loop found in the linked list\n");
-return (0);
+listint_t *hare, *tortoise;
+if (!head)
+return (NULL);
+hare = tortoise = head;
+while (tortoise && hare && hare->next)
+{
+tortoise = tortoise->next;
+hare = (hare->next)->next;
+if (hare == tortoise)
+{
+tortoise = head;
+while (tortoise && hare)
+{
+if (tortoise == hare)
+return (tortoise);
+tortoise = tortoise->next;
+hare = hare->next;
+}
+}
+}
+return (NULL);
 }

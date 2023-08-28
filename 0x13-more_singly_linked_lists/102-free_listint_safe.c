@@ -1,20 +1,29 @@
 #include <stdio.h>
 #include "lists.h"
+#include <stdlib.h>
 
 /**
-* main - Entry point to test linked list functions.
-* Return: Always 0.
+* free_listint_safe - frees a listint_t list (can free lists with a loop)
+* @h: pointer to head of singly linked list
+*
+* Return: the size of the list that was free’d
 */
-int main(void)
+size_t free_listint_safe(listint_t **h)
 {
-listint_t *head = NULL;
-/* Build the linked list */
-add_nodeint(&head, 1);
-add_nodeint(&head, 7);
-add_nodeint(&head, 12);
-add_nodeint(&head, -98);
-/* Free the linked list and print the number of freed elements */
-size_t freed_elements = free_listint_safe(&head);
-printf("Number of freed elements: %zu\n", freed_elements);
+listint_t *tmp = *h, *tmp2;
+unsigned int count = 0;
+if (tmp == 0 || h == 0)
 return (0);
+tmp = *h;
+while (tmp != 0)
+{
+tmp2 = tmp;
+tmp = tmp->next;
+count++;
+free(tmp2);
+if (tmp2 <= tmp)
+break;
+}
+*h = 0;
+return (count);
 }
