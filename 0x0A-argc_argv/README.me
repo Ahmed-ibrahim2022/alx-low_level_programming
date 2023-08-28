@@ -1,0 +1,28 @@
+# General
+
+This section covers various concepts related to C programming, including how to use arguments passed to your program, different prototypes of the `main` function, and techniques for handling unused variables or parameters using `__attribute__((unused))` or `(void)`.
+
+## How to Use Arguments Passed to Your Program
+
+When you run a C program, you can pass command-line arguments to it. These arguments are stored in the `argv` (argument vector) array, and the number of arguments is stored in the `argc` (argument count) variable. You can access and utilize these arguments within your program using appropriate indexing.
+
+## Two Prototypes of the `main` Function
+
+There are two common prototypes for the `main` function in C:
+
+1. `int main(void)`
+2. `int main(int argc, char *argv[])`
+
+The choice between these two prototypes depends on whether your program needs to receive command-line arguments. The first prototype is used when your program doesn't require any command-line arguments. The second prototype is used when your program expects command-line arguments, with `argc` representing the argument count and `argv` containing the actual arguments.
+
+## Using __attribute__((unused)) or (void) to Compile Functions with Unused Variables
+
+In C, you might encounter situations where a function has unused variables or parameters. These variables can trigger warnings during compilation. To avoid these warnings, you can use the `__attribute__((unused))` attribute or cast the variable to `(void)` within the function body. Both methods signal to the compiler that the variable is intentionally left unused and should not trigger warnings.
+
+Example using `__attribute__((unused))`:
+
+```c
+void example_function(int unused_variable) __attribute__((unused));
+void example_function(int unused_variable) {
+    // Function body without using unused_variable
+}
