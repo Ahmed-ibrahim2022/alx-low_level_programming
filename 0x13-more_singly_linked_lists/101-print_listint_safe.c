@@ -1,21 +1,27 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
 
-/*** main - Entry point to test linked list functions.
-* Return: Always 0.
+/**
+* print_listint_safe- prints linked list,safely
+* @head: list of type listint_t > print
+*
+* Return: number of nodes in the list
 */
-int main(void)
+size_t print_listint_safe(const listint_t *head)
 {
-listint_t *head = NULL;
-
-/* Build and print the linked list */
-add_nodeint(&head, 1);
-add_nodeint(&head, 7);
-add_nodeint(&head, 12);
-add_nodeint(&head, -98);
-print_listint_safe(head);
-/* Free the linked list */
-free_listint2(&head);
-return (0);
+size_t num = 0;
+long int diff;
+while (head)
+{
+diff = head - head->next;
+num++;
+printf("[%p] %d\n", (void *)head, head->n);
+if (diff > 0)
+head = head->next;
+else
+{
+printf("-> [%p] %d\n", (void *)head->next, head->next->n);
+break;
+}
+}
+return (num);
 }
