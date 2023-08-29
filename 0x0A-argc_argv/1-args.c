@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
 * print_argument_count - Prints the count of arguments (excluding program name)
