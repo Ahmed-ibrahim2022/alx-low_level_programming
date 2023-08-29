@@ -1,16 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
-* print_argument_count - Prints the count of arguments (excluding program name)
+* main - Entry point
 *
-* @arg_count: Number of command-line arguments
+* @argc: Counts the number of parameters that go into main
+* @argv: Pointer of array of pointers containing strings entering main
+* Return: Always 0 (Success)
 */
-int main(int argc, char *argv[] __attribute__((unused)))
+int main(int argc, char **argv)
 {
-printf("%d\n", argc - 1);
-return (0);
-}int main(int argc, char *argv[] __attribute__((unused)))
-{
-printf("%d\n", argc - 1);
+(void) argv;
+printf("%i\n", argc - 1);
 return (0);
 }
