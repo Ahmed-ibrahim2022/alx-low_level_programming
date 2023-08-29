@@ -14,17 +14,17 @@ char *new_str;
 int str_len;
 int i = 0;
 if (str == NULL)
-return NULL;
+return (NULL);
 for (str_len = 0; str[str_len] != '\0'; str_len++)
 ;
 str_len++;
 new_str = malloc(sizeof(char) * str_len);
 if (new_str == NULL)
-return NULL;
+return (NULL);
 while (i < str_len)
 {
 new_str[i] = str[i];
 i++;
 }
-return new_str;
+return (new_str);
 }
