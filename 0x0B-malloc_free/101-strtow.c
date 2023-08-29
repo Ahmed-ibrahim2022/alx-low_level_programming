@@ -8,61 +8,54 @@
 *
 * Return: No return
 */
-void free_grid(char **grid, unsigned int height)
+void ch_free_grid(char **grid, unsigned int height)
 {
-unsigned int i;
 if (grid != NULL && height != 0)
 {
-for (i = 0; i < height; i++)
-{
-free(grid[i]);
-}
+for (; height > 0; height--)
+free(grid[height]);
+free(grid[height]);
 free(grid);
 }
 }
-
-/**
-* split_string - splits a string into words.
-* @str: string.
-*
-* Return: Pointer to an array of strings
-*/
-char **split_string(char *str)
+char **strtow(char *str)
 {
-char **words;
-unsigned int word_count = 0, idx = 0, word_start = 0, i, j, word_length;
+char **aout;
+unsigned int c, height, i, j, a1;
 if (str == NULL || *str == '\0')
-return NULL;
-for (; str[idx] != '\0'; idx++)
+return (NULL);
+for (c = height = 0; str[c] != '\0'; c++)
 {
-if (str[idx] != ' ' && (str[idx + 1] == ' ' || str[idx + 1] == '\0'))
-word_count++;
+f (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+height++;
 }
-words = malloc((word_count + 1) * sizeof(char *));
-if (words == NULL || word_count == 0)
+aout = malloc((height + 1) * sizeof(char *));
+if (aout == NULL || height == 0)
 {
-free(words);
+free(aout);
 return (NULL);
 }
-for (i = 0; i < word_count; i++)
+for (i = a1 = 0; i < height; i++)
 {
-while (str[word_start] == ' ')
-word_start++;
-unsigned int word_end = word_start;
-while (str[word_end] != ' ' && str[word_end] != '\0')
-word_end++;
-word_length = word_end - word_start;
-words[i] = malloc((word_length + 1) * sizeof(char));
-if (words[i] == NULL)
+for (c = a1; str[c] != '\0'; c++)
 {
-free_grid(words, i);
+if (str[c] == ' ')
+a1++;
+if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+{
+aout[i] = malloc((c - a1 + 2) * sizeof(char));
+if (aout[i] == NULL)
+{
+ch_free_grid(aout, i);
 return (NULL);
 }
-for (j = 0; j < word_length; j++)
-words[i][j] = str[word_start + j];
- words[i][word_length] = '\0';
-word_start = word_end;
+break;
 }
-words[word_count] = NULL;
-return (words);
+}
+for (j = 0; a1 <= c; a1++, j++)
+aout[i][j] = str[a1];
+aout[i][j] = '\0';
+}
+aout[i] = NULL;
+return (taou);
 }
