@@ -10,10 +10,10 @@
 int factorial(int n)
 {
 if (n < 0)
-return -1;
+return (-1);
 if (n == 0 || n == 1)
-return 1;
-return n * factorial(n - 1);
+return (1);
+return (n * factorial(n - 1));
 }
 
 /**
@@ -28,11 +28,11 @@ char *create_array(unsigned int size, char c)
 char *arr;
 unsigned int i;
 if (size == 0)
-return NULL;
+return (NULL);
 arr = malloc(sizeof(c) * size);
 if (arr == NULL)
-return NULL;
+return (NULL);
 for (i = 0; i < size; i++)
 arr[i] = c;
-return arr;
+return (arr);
 }
