@@ -10,9 +10,10 @@
 */
 void free_grid(char **grid, unsigned int height)
 {
+unsigned int i;
 if (grid != NULL && height != 0)
 {
-for (unsigned int i = 0; i < height; i++)
+for (i = 0; i < height; i++)
 {
 free(grid[i]);
 }
@@ -29,9 +30,9 @@ free(grid);
 char **split_string(char *str)
 {
 char **words;
-unsigned int word_count = 0, idx = 0, word_start = 0;
+unsigned int word_count = 0, idx = 0, word_start = 0, i, j, word_length;
 if (str == NULL || *str == '\0')
-return (NULL);
+return NULL;
 for (; str[idx] != '\0'; idx++)
 {
 if (str[idx] != ' ' && (str[idx + 1] == ' ' || str[idx + 1] == '\0'))
@@ -43,23 +44,23 @@ if (words == NULL || word_count == 0)
 free(words);
 return (NULL);
 }
-for (unsigned int i = 0; i < word_count; i++)
+for (i = 0; i < word_count; i++)
 {
 while (str[word_start] == ' ')
 word_start++;
 unsigned int word_end = word_start;
 while (str[word_end] != ' ' && str[word_end] != '\0')
 word_end++;
-unsigned int word_length = word_end - word_start;
+word_length = word_end - word_start;
 words[i] = malloc((word_length + 1) * sizeof(char));
 if (words[i] == NULL)
 {
 free_grid(words, i);
 return (NULL);
 }
-for (unsigned int j = 0; j < word_length; j++)
+for (j = 0; j < word_length; j++)
 words[i][j] = str[word_start + j];
-words[i][word_length] = '\0';
+ words[i][word_length] = '\0';
 word_start = word_end;
 }
 words[word_count] = NULL;
