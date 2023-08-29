@@ -1,69 +1,75 @@
 #include "main.h"
-#include <stdlib.h>
 
 /**
-* ch_free_grid - frees a 2 dimensional array.
-* @grid: multidimensional array of char.
-* @height: height of the array.
-*
-* Return: no return
-*/
-void ch_free_grid(char **grid, unsigned int height)
+ * wrdcnt - counts the number of words in a string
+ * @s: string to count
+ *
+ * Return: int of number of words
+ */
+int wrdcnt(char *s)
 {
-if (grid != NULL && height != 0)
-{
-for (; height > 0; height--)
-	      free(grid[height]);
-           free(grid[height]);
-           free(grid);
-       }
+	int i, n = 0;
+
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] == ' ')
+		{
+			if (s[i + 1] != ' ' && s[i + 1] != '\0')
+				n++;
+		}
+		else if (i == 0)
+			n++;
+	}
+	n++;
+	return (n);
 }
 
 /**
- * strtow - splits a string into words.
- * @str: string.
+ * strtow - splits a string into words
+ * @str: string to split
  *
- * Return: pointer of an array of integers
+ * Return: pointer to an array of strings
  */
 char **strtow(char *str)
 {
-    char **aout;
-    unsigned int c, height, i, j, a1;
+	int i, j, k, l, n = 0, wc = 0;
+	char **w;
 
-    if (str == NULL || *str == '\0')
-       return (NULL);
-       for (c = height = 0; str[c] != '\0'; c++)
-	   {
-	       if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
-		  height++;
-		  }
-	   aout = malloc((height + 1) * sizeof(char *));
-	   if (aout == NULL || height == 0)
-	      {
-		  free(aout);
-		  return (NULL);
-		  }
-	      for (i = a1 = 0; i < height; i++)
-		  {
-		      for (c = a1; str[c] != '\0'; c++)
-			  {
-			      if (str[c] == ' ')
-				 a1++;
-				 if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
-				    {
-					aout[i] = malloc((c - a1 + 2) * sizeof(char));
-					if (aout[i] == NULL)
-					   {
-					       ch_free_grid(aout, i);
-					       return (NULL);
-					       }
-					   break;
-					   }
-				    }
-			  for (j = 0; a1 <= c; a1++, j++)
-			      aout[i][j] = str[a1];
-			      aout[i][j] = '\0';
-			      }
-		  aout[i] = NULL;
-		  return (aout);
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	n = wrdcnt(str);
+	if (n == 1)
+		return (NULL);
+	w = (char **)malloc(n * sizeof(char *));
+	if (w == NULL)
+		return (NULL);
+	w[n - 1] = NULL;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ' && (i == 0 || str[i - 1] == ' '))
+		{
+			for (j = 1; str[i + j] != ' ' && str[i + j]; j++)
+				;
+			j++;
+			w[wc] = (char *)malloc(j * sizeof(char));
+			j--;
+			if (w[wc] == NULL)
+			{
+				for (k = 0; k < wc; k++)
+					free(w[k]);
+				free(w[n - 1]);
+				free(w);
+				return (NULL);
+			}
+			for (l = 0; l < j; l++)
+				w[wc][l] = str[i + l];
+			w[wc][l] = '\0';
+			wc++;
+			i += j;
+		}
+		else
+			i++;
+	}
+	return (w);
 }
